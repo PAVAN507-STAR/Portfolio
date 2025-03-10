@@ -57,5 +57,5 @@
   "eslintConfig": {
     "extends": "next/core-web-vitals"
   },
-  "packageManager": "pnpm@7.18.0"
+    "packageManager": "pnpm@8.6.0"
 }
