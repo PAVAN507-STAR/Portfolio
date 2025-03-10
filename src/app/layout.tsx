@@ -3,7 +3,7 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { roboto } from "@/app/font";
 import Hello from "@/components/hello";
 import NavBar from "@/components/nav-bar";
-import { ProgressBar } from "@/components/progress-bar";
+import { ProgressBar, ProgressBarProvider } from "@/components/progress-bar";
 import SideBar from "@/components/side-bar";
 import { WebVitals } from "@/components/web-vitals";
 import config from "@/config";
@@ -74,24 +74,26 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${inter.className} bg-background text-text-primary`}>
-        <WebVitals gaId={googleAnalyticId} />
-        <ProgressBar className="fixed top-0 h-1 bg-yellow-500">
-          <Hello />
-          <main>
-            <SideBar
-              avatar={avatar}
-              firstName={firstName}
-              lastName={lastName}
-              middleName={middleName}
-              preferredName={preferredName}
-              status={status}
-            />
-            <div className="main-content">
-              <NavBar />
-              {children}
-            </div>
-          </main>
-        </ProgressBar>
+        <ProgressBarProvider>
+          <WebVitals gaId={googleAnalyticId} />
+          <ProgressBar className="fixed top-0 h-1 bg-yellow-500">
+            <Hello />
+            <main>
+              <SideBar
+                avatar={avatar}
+                firstName={firstName}
+                lastName={lastName}
+                middleName={middleName}
+                preferredName={preferredName}
+                status={status}
+              />
+              <div className="main-content">
+                <NavBar />
+                {children}
+              </div>
+            </main>
+          </ProgressBar>
+        </ProgressBarProvider>
       </body>
       <GoogleAnalytics gaId={googleAnalyticId} />
       <GoogleTagManager gtmId={googleTagManagerId} />

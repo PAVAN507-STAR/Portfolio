@@ -190,3 +190,13 @@ function useInterval(callback: () => void, delay: number | null) {
     }
   }, [delay]);
 }
+
+export function ProgressBarProvider({ children }) {
+  const [progress, setProgress] = useState(0);
+  
+  return (
+    <ProgressBarContext.Provider value={{ progress, setProgress }}>
+      {children}
+    </ProgressBarContext.Provider>
+  );
+}
