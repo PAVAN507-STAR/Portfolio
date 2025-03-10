@@ -1,13 +1,13 @@
 import React from "react";
-import { ProgressBarLink } from "@/components/progress-bar";
+import { ProgressBarLink } from "@/components/progress-bar-link";
 
 interface FilterListProps {
-  path: string;
-  selectedTag: string;
   blogTags: string[];
+  selectedTag: string;
+  path: string;
 }
 
-function FilterList({ path, selectedTag, blogTags }: FilterListProps) {
+function FilterList({ blogTags, selectedTag, path }: FilterListProps) {
   return (
     <ul className="filter-list">
       {blogTags.map((tag, index) => (

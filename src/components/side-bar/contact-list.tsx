@@ -12,7 +12,9 @@ function ContactsList({ contacts }: ContactsListProps) {
   return (
     <ul className="contacts-list">
       {contacts.map((contact, index) => (
-        <ContactItem key={index} contact={contact} />
+        <React.Fragment key={index}>
+          <ContactItem contact={contact} />
+        </React.Fragment>
       ))}
     </ul>
   );

@@ -3,7 +3,7 @@ import AboutHeader from "@/components/about/about-header";
 import Globe from "@/components/about/globe";
 import GitHubCalendar from "react-github-calendar";
 import { ThemeInput } from "react-activity-calendar";
-import { Marquee } from "./marquee";
+import FastMarquee from 'react-fast-marquee';
 import { LuMapPin, LuZap } from "react-icons/lu";
 import type { VCardIconType } from "@/types/config";
 
@@ -44,22 +44,20 @@ function CodingStats({ techStacks, githubUsername }: CodingStatsProps) {
               <LuZap size={18} />
               <h2 className="text-sm font-light">Stacks</h2>
             </div>
-            <Marquee gap="20px" className="py-2" fade pauseOnHover>
+            <FastMarquee gradient={false} speed={50} pauseOnHover>
               {techStacks.programmingLanguages.map((stack) => (
-                <stack.icon
-                  key={stack.name}
-                  className="size-10 text-white-2 hover:scale-110 hover:text-orange-yellow-crayola"
-                />
+                <div key={stack.name} className="mx-2">
+                  <stack.icon className="text-2xl" />
+                </div>
               ))}
-            </Marquee>
-            <Marquee gap="20px" className="py-2" reverse fade pauseOnHover>
+            </FastMarquee>
+            <FastMarquee speed={50} className="py-2" direction="right" gradientWidth={50} pauseOnHover>
               {techStacks.frameworks.map((stack) => (
-                <stack.icon
-                  key={stack.name}
-                  className="size-10 text-white-2 hover:scale-110 hover:text-orange-yellow-crayola"
-                />
+                <div key={stack.name} className="mx-2">
+                  <stack.icon className="size-10 text-white-2 hover:scale-110 hover:text-orange-yellow-crayola" />
+                </div>
               ))}
-            </Marquee>
+            </FastMarquee>
           </div>
         </li>
         <li className="relative rounded-2xl shadow-shadow-2 coding-item bg-gradient-onyx before:absolute before:content-[''] before:rounded-2xl h-[200px] md:h-auto">

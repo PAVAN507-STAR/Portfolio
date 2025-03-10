@@ -1,48 +1,54 @@
 "use client";
 
 import React, { useState } from "react";
-import { MdExpandMore } from "react-icons/md";
-import { ProgressBarLink } from "@/components/progress-bar";
+import { ProgressBarLink } from "@/components/progress-bar-link";
+import { LuChevronDown } from "react-icons/lu";
 
 interface FilterSelectBoxProps {
-  path: string;
-  selectedTag: string;
   blogTags: string[];
+  selectedTag: string;
+  path: string;
 }
 
-function FilterSelectBox({
-  path,
-  selectedTag,
-  blogTags,
-}: FilterSelectBoxProps) {
-  const [isSelectActive, setIsSelectActive] = useState(false);
+function FilterSelectBox({ blogTags, selectedTag, path }: FilterSelectBoxProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div className="filter-select-box">
       <button
-        className={`filter-select ${isSelectActive ? "active" : ""}`}
-        onClick={() => setIsSelectActive(!isSelectActive)}
+        className="filter-select"
+        onClick={toggleDropdown}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
       >
-        <div className="select-value">{selectedTag || "Select category"}</div>
-        <div className="select-icon">
-          <MdExpandMore />
-        </div>
+        <span>{selectedTag || "All"}</span>
+        <LuChevronDown className={`icon ${isOpen ? "active" : ""}`} />
       </button>
-      {isSelectActive && (
-        <ul className="select-list">
-          {blogTags.map((tag: string) => (
-            <li className="select-item" key={tag}>
-              <button
-                onClick={() => {
-                  setIsSelectActive(false);
-                }}
+
+      {isOpen && (
+        <ul
+          className="select-list"
+          role="listbox"
+          aria-activedescendant={selectedTag}
+        >
+          {blogTags.map((tag, index) => (
+            <li
+              key={index}
+              role="option"
+              aria-selected={selectedTag === tag}
+              onClick={() => {
+                toggleDropdown();
+              }}
+            >
+              <ProgressBarLink
+                href={`${path}?tag=${encodeURIComponent(tag)}`}
               >
-                <ProgressBarLink
-                  href={`${path}?tag=${encodeURIComponent(tag)}`}
-                >
-                  {tag}
-                </ProgressBarLink>
-              </button>
+                {tag}
+              </ProgressBarLink>
             </li>
           ))}
         </ul>

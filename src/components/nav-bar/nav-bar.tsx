@@ -3,7 +3,7 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import config from "@/config";
-import { ProgressBarLink } from "@/components/progress-bar";
+import { ProgressBarLink } from "@/components/progress-bar-link";
 
 import "@/styles/nav-bar.css";
 

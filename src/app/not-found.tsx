@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import PageHeader from "@/components/page-header";
-import MarkdownRenderer from "@/components/markdown/markdown-renderer";
+import MarkdownRenderer from "@/components/markdown-renderer";
 import config from "@/config";
 
 const { title } = config;
@@ -10,22 +10,21 @@ export const metadata: Metadata = {
   title: `Not Found | ${title}`,
 };
 
-const errorMessages = [
-  "This page doesn't exist.",
-  "If this is a mistake, [let us know](https://github.com/1chooo/1chooo.com/issues/new), and we will try to fix it!",
-];
+export default function NotFound() {
+  const errorMessages = [
+    "# 404 - Page Not Found",
+    "The page you're looking for doesn't exist or has been moved."
+  ];
 
-function NotFound() {
   return (
-    <article>
-      <PageHeader header="404 Not Found" />
+    <article className="not-found">
       <section className="text-light-gray leading-relaxed">
         {errorMessages.map((item, index) => (
-          <MarkdownRenderer key={`${item}-${index}`} content={item} />
+          <div key={`${item}-${index}`}>
+            <MarkdownRenderer content={item} />
+          </div>
         ))}
       </section>
     </article>
   );
 }
-
-export default NotFound;

@@ -3,7 +3,8 @@
 drafts/
 
 # Dependencies
-node_modules
+node_modules/
+.pnpm-store/
 .pnp
 .pnp.js
 
@@ -26,9 +27,11 @@ coverage
 # Build Outputs
 .next/
 out/
-build
-dist
+build/
+dist/
 
+# Debug logs
+.pnpm-debug.log*
 
 # Debug
 npm-debug.log*

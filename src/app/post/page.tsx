@@ -7,7 +7,7 @@ import FilterSelectBox from "@/components/filter/filter-select-box";
 import FilterList from "@/components/filter/filter-list";
 import MarkdownRenderer from "@/components/markdown/markdown-renderer";
 import Pagination from "@/components/pagination";
-import { ProgressBarLink } from "@/components/progress-bar";
+import { ProgressBarLink } from "@/components/progress-bar-link";
 import { POSTS_PER_PAGE } from "@/lib/constants";
 import { getBlogPosts } from "@/lib/db/v1/post";
 import config from "@/config";

@@ -4,7 +4,7 @@ import FilterSelectBox from "@/components/filter/filter-select-box";
 import FilterList from "@/components/filter/filter-list";
 import MarkdownRenderer from "@/components/markdown/markdown-renderer";
 import Pagination from "@/components/pagination";
-import { ProgressBarLink } from "@/components/progress-bar";
+import { ProgressBarLink } from "@/components/progress-bar-link";
 import { getPortfolioPosts } from "@/lib/db/v1/portfolio";
 import config from "@/config";
 import { LuEye } from "react-icons/lu";

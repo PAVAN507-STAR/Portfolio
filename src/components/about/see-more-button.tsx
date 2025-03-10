@@ -1,6 +1,6 @@
 import React from "react";
 import { sendGTMEvent } from "@next/third-parties/google";
-import { ProgressBarLink } from "@/components/progress-bar";
+import { ProgressBarLink } from "@/components/progress-bar-link";
 import type { VCardIconType } from "@/types/config";
 
 interface SeeMoreButtonProps {

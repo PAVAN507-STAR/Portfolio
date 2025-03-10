@@ -43,25 +43,13 @@ interface ProgressBarProps {
   children: ReactNode;
 }
 
-export function ProgressBar({ className, children }: ProgressBarProps) {
-  let progress = useProgress();
-  let width = useMotionTemplate`${progress.value}%`;
-
+export const ProgressBar = ({ className, children }: ProgressBarProps) => {
   return (
-    <ProgressBarContext.Provider value={progress}>
-      <AnimatePresence onExitComplete={progress.reset}>
-        {progress.state !== "complete" && (
-          <motion.div
-            style={{ width }}
-            exit={{ opacity: 0 }}
-            className={className}
-          />
-        )}
-      </AnimatePresence>
+    <div className={className}>
       {children}
-    </ProgressBarContext.Provider>
+    </div>
   );
-}
+};
 
 interface ProgressBarLinkProps {
   href:
